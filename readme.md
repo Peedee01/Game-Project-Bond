@@ -19,22 +19,19 @@ FEATURES OF THE GAME
 
 SET-UP:
 
-CHARACTER CLASS
-- x: the position of the character. (horizontal axis)
-- y: the position of the character. (vertical axis)
-- speed: the speed of the character.
-- width: the width of the character.
-- height: the height of the character.
-- element: the html element.
-
--> This class will be extended in the player and in the villain class
+PLAYER CLASS
+Contains all the elements of the player
+- the speed of the player
+- the width and height of the player
+- the HTML element of the player
+- the position left and top of the player (startposition)
+- the direction of the player which eventually wil be decided by the move method
+- the move method that controls the movements of the player
 
 GAME CLASS
 Controls all the game logic and mechanics.
 
 - isGameOver: Boolean to indicate if the game has ended.
-- player: Instance of the player object.
-- villains: Array to manage villains.
 - lives: Player's remaining lives.
 - level: Current game level.
 - gameArea: HTML element representing the game area.
@@ -75,7 +72,7 @@ Sound Effects: Use JavaScript to control background music and sound effects like
 
 Saturday 
 - Review the Project Outline: Go over the game concept, class structure, and basic logic. Ensure that all necessary HTML elements and CSS styles are planned out.
-Set Up Project Structure: Create your HTML, CSS, and JavaScript files. You don’t need to write much code, but get the project structure ready.
+- Set Up Project Structure: Create your HTML, CSS, and JavaScript files. You don’t need to write much code, but get the project structure ready.
 - Play with Simple CSS: Set up the basic layout of the game area using CSS (e.g., background color or a simple image for the game area).
 
 Sunday
