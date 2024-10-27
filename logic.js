@@ -42,16 +42,48 @@ function gameLoop() {
   if (!game.isGameOver) {
     frames++;
     player.move();
-    
+    game.villains.forEach((villain) => {
+      villain.move();
+      collisionTest(villain);
+    })
+
+    if (frames % 100 === 0) {
+      new Villain();
+    }
+    if (frames % 800 === 0) {
+      game.level++;
+      game.updateLevel();
+    }
+    requestAnimationFrame(gameLoop);
   }
-
-
-
-
-
-  requestAnimationFrame(gameLoop);
 }
 
 requestAnimationFrame(gameLoop)
 
+function collisionTest(villain) {
+  const playerLeftEdge = player.left;
+  const playerRightEdge = player.left + player.width;
+  const playerTopEdge = player.top;
+  const playerBottomEdge = player.top + player.height;
 
+  const villainLeftEdge = villain.left;
+  const villainRightEdge = villain.left + villain.width;
+  const villainTopEdge = villain.top;
+  const villainBottomEdge = villain.top + villain.height;
+
+  if (
+    playerLeftEdge < villainRightEdge &&
+    playerRightEdge > villainLeftEdge &&
+    playerTopEdge < villainBottomEdge &&
+    playerBottomEdge > villainTopEdge
+  ) {
+    // destroy villain and remove lives
+    game.lives--;
+    game.updateLives();
+    villain.destroy();
+
+    if (game.lives <= 0) {
+      game.isGameOver = true;
+    }
+  }
+}

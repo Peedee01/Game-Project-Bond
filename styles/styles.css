@@ -7,20 +7,54 @@
 body {
   min-height: 100vh;
   align-content: center;
+  
+  
 }
 
 #game-area {
   margin: 0 auto;
-  background-color: black;
   height: 80vh;
   width: 80vw;
   position: relative;
+  background-color: rgba(67, 67, 67, 0.845);
+  background-position: center;
+  background-size: cover;
 }
 
-#player {
-  background-color: green;
-  width: 50px;
-  height: 50px;
+#player, .villain {
+  width: 4rem;
+  height: 5rem;
   position: absolute;
   z-index: 1;
+  background-image: url(/assets-1/images/Bond.png);
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.villain {
+  background-image: url(/assets-1/images/villain1.png);
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  width: 6rem;
+  height: 7rem;
+}
+
+#lives-display {
+  position: absolute;
+  z-index: 2;
+  top: 2rem;
+  left: 1rem;
+}
+
+#levels-display {
+  position: absolute;
+  border-radius: 100%;
+  font-size: 1rem;
+  z-index: 2;
+  top: 1rem;
+  left: 1rem;
+  color: white;
 }

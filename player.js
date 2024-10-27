@@ -9,21 +9,37 @@ class Player {
     this.top = 0;
     this.speed = 10;
     this.direction = 0;
-  }
+  } 
   
   move() {
     switch (this.direction) {
       case "up":
-        this.top -= this.speed;
+        if (this.top <= 0) {
+          this.top = 0;
+        } else {
+          this.top -= this.speed;
+        }
         break;
       case "down":
-        this.top += this.speed;
+        if (this.top >= game.height - this.height) {
+          this.top = game.height - this.height;
+        } else {
+          this.top += this.speed;
+        }
         break;
       case "left":
-        this.left -= this.speed;
+        if (this.left <= this.width) {
+          this.left = 0;
+        } else {
+          this.left -= this.speed;
+        }
         break;
       case "right":
-        this.left = + this.speed;
+        if (this.left >= game.width - this.width) {
+          this.left = game.width - this.width;
+        } else {
+          this.left += this.speed;
+        }
         break;
     }
     this.element.style.top = this.top + "px";

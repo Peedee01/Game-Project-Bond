@@ -28,6 +28,9 @@ Contains all the elements of the player
 - the direction of the player which eventually wil be decided by the move method
 - the move method that controls the movements of the player
 
+Enemy class
+- we create an array of villains
+
 GAME CLASS
 Controls all the game logic and mechanics.
 
