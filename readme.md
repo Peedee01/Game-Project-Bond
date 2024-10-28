@@ -40,7 +40,7 @@ Controls all the game logic and mechanics.
 - gameArea: HTML element representing the game area.
 - score: Current player score.
 - startGame(): Initializes the game, creates the player and villains.
-- checkCrash(): Checks for collisions between the player and villains or objects (like Vodka Martinis).
+- colissionTest(): Checks for collisions between the player and villains or objects (like Vodka Martinis).
 - updateGameArea(): Updates the positions of all characters and objects.
 - endGame(): Stops the game and shows game-over screen.
 - restartGame(): To restart the game after game-over screen.

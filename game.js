@@ -3,10 +3,13 @@ class Game {
     this.isGameOver = false;
     this.lives = 5;
     this.level = 1;
+    this.score = 0;
     this.gameArea = document.querySelector("#game-area");
     this.width = this.gameArea.getBoundingClientRect().width;
     this.height = this.gameArea.getBoundingClientRect().height;
     this.villains = [];
+    this.martinis = [];
+    this.bullets = [];
     this.livesElement = document.querySelector("#lives-display");
     this.levelElement = document.querySelector("#levels-display");
     this.scoreElement = document.querySelector("#score")
@@ -19,6 +22,7 @@ class Game {
   updateLevel() {
     this.levelElement.innerText = this.level.toString();
   }
+  
 }
 
 
