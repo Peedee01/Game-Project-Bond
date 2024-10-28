@@ -19,15 +19,15 @@ body {
   height: 80vh;
   width: 80vw;
   position: relative;
-  background-color: rgba(67, 67, 67, 0.845);
+  background-image: url(/assets-1/images/arena1.webp);
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
 
 #player, .villain, .martini, .bullet {
-  width: 75px;
-  height: 80px;
+  width: 80px;
+  height: 85px;
   position: absolute;
   z-index: 1;
   background-image: url(/assets-1/images/Bond.png);
@@ -65,14 +65,22 @@ body {
 
 #lives-display {
   position: absolute;
+  border-bottom: 2px dashed rgb(37, 37, 37);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
   z-index: 2;
-  top: 2rem;
+  top: 70vh;
   left: 1rem;
 }
 
+#score-display {
+  position: absolute;
+  left: 1rem;
+  top: 5rem:
+}
 #levels-display {
   position: absolute;
-  border-radius: 100%;
   font-size: 1rem;
   z-index: 2;
   top: 1rem;
@@ -80,9 +88,10 @@ body {
   color: white;
 }
 
+
 .bullet {
-  width: 5px;
-  height: 3px;
+  width: 7px;
+  height: 5px;
   background-image: url(/assets-1/images/bullet.png);
   background-position: center;
   background-size: cover;

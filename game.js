@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.isGameOver = false;
     this.lives = 5;
-    this.level = 1;
+    this.level = 0;
     this.score = 0;
     this.gameArea = document.querySelector("#game-area");
     this.width = this.gameArea.getBoundingClientRect().width;
@@ -12,7 +12,7 @@ class Game {
     this.bullets = [];
     this.livesElement = document.querySelector("#lives-display");
     this.levelElement = document.querySelector("#levels-display");
-    this.scoreElement = document.querySelector("#score")
+    this.scoreElement = document.querySelector("#score-display");
     this.updateLives();
   }
 
@@ -20,7 +20,10 @@ class Game {
     this.livesElement.innerText = "❤️".repeat(this.lives);
   }
   updateLevel() {
-    this.levelElement.innerText = this.level.toString();
+    this.levelElement.innerText = "LEVEL: " + this.level.toString();
+  }
+  updateScore() {
+    this.scoreElement.innerText = "SCORE: " + this.score.toString();
   }
   
 }

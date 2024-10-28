@@ -35,12 +35,26 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+
+let lastShotTime = 0;
+// cooldowntime from shooting
+const shotCooldown = 750;
+
+function shoot() {
+  const currentTime = Date.now();
+  if (currentTime - lastShotTime >= shotCooldown) {
+    new Bullet();
+    lastShotTime = currentTime;
+  }
+}
+
 // shooting mechanics
 document.addEventListener('keydown', (e) => {
   if (e.code === "Space") {
-    new Bullet();
+    shoot();
   }
 })
+
 
 let frames = 0;
 
@@ -51,20 +65,22 @@ function gameLoop() {
     player.move();
     
     // every 400 frames a new martini
-    if (frames % 600 === 0) {
+    if (frames % 400 === 0) {
       new Martini();
     }
-
-    // martinis array
+    
     game.martinis.forEach((martini) => {
+      // check the collision with the martinis
       collisionTest(martini);
+      
       // remove martini after a set number of frames
-      if (frames - martini.spawnFrame === 500) {
+      if (frames % 700 === 0) {
         martini.destroy();
+        
       };
     })
 
-    // bullets array move and shootcrash
+    // bullets array move and checking if the bullets hit the villain
     game.bullets.forEach((bullet) => {
       bullet.move();
       game.villains.forEach((villain) => {
@@ -83,11 +99,11 @@ function gameLoop() {
     }
 
     // every 800 frames a new level
-    if (frames % 800 === 0) {
+    if (frames % 200 === 0) {
+      new Villain();
+      new Villain();
       game.level++;
       game.updateLevel();
-      new Villain();
-      Villain.speed += 2
     }
     requestAnimationFrame(gameLoop);
   }
@@ -148,8 +164,18 @@ function shootTest(bullet, villain) {
     bulletTopEdge < villainBottomEdge &&
     bulletBottomEdge > villainTopEdge
   ) {
+    game.score += 100;
+    game.updateScore();
     villain.destroy();
     bullet.destroy();
   }
 }
+
+
+
+// sounds
+// window.addEventListener('click', () => {
+//   const audio = document.querySelector('#theme-music')
+//   audio.play();
+// })
 

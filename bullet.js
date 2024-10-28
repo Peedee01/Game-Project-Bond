@@ -5,9 +5,10 @@ class Bullet {
     
     this.width = this.element.getBoundingClientRect().width;
     this.height = this.element.getBoundingClientRect().height; 
+    
     // position at the players location
     this.left = player.left + player.width;
-    this.top = player.top;
+    this.top = player.top + 0.2 * player.height;
     this.speed = 8;
     
     game.gameArea.appendChild(this.element);
@@ -33,4 +34,3 @@ class Bullet {
     }
 }
 
-let bullet = new Bullet();
