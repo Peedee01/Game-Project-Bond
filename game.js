@@ -4,7 +4,7 @@ class Game {
     this.lives = 5;
     this.level = 0;
     this.score = 0;
-    this.startScreen = document.querySelector("#start-scren");
+    this.startScreen = document.querySelector("#start-screen");
     this.gameArea = document.querySelector("#game-area");
     this.width = this.gameArea.getBoundingClientRect().width;
     this.height = this.gameArea.getBoundingClientRect().height;
@@ -15,7 +15,6 @@ class Game {
     this.livesElement = document.querySelector("#lives-display");
     this.scoreElement = document.querySelector("#score-display");
     this.gameOverScreen = document.querySelector("#game-over");
-    this.scoreElement2 = document.querySelector("#score-diplay2")
     this.updateLives();
   }
 
