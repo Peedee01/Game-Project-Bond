@@ -6,16 +6,29 @@
   <title>007 LEGACY</title>
   <link rel="icon" type="image/x-icon" href="./assets-1/images/bondfavicon.png">
   <link rel="stylesheet" href="styles/styles.css">
+  
   <!-- <audio id="theme-music" src="assets/sounds/the-names-bond-101soundboards.mp3"></audio> -->
 </head>
 
 <body>
 
+
   <section id="game-area">
+    <div id="start-area">
+      <img src="assets-1/images/007.png" alt="007">
+      <h1>Legacy</h1>
+      <button id="start-button"> start the game now!</button>
+    </div>
+      
     <div id="player"></div>
     <span id="lives-display"> ❤️ </span>
-    <span id="levels-display"> </span>
+    <span id="levels-display"></span>
     <span id="score-display"></span>
+  </section>
+  <section id="game-over">
+    <h2> Even the greatest agents Fall</h2>
+    <span id="final-score"></span>
+    <button id="restart-game"> Try again</button>
   </section>
 
   <script src="game.js"></script>

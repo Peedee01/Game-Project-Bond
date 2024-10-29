@@ -6,32 +6,38 @@ class Villain {
     this.element.classList.add("villain");
 
     if (game.level >= 3) {
-      this.element.classList.add("villain");
       this.element.classList.add("villain2");
     }
 
     if (game.level >= 5) {
       this.element.classList.add("villain3") && this.element.classList.add("villain");
     }
-
     // we append the child in the game-area
     game.gameArea.appendChild(this.element);
-
+    
     // we get the measurements and the position just like with the player
     this.width = this.element.getBoundingClientRect().width;
     this.height = this.element.getBoundingClientRect().height;
     this.left = game.width - this.width;
-    // but the enemy spawns randomly on the y-axis
-    this.top = Math.floor(Math.random() * (game.height - 0.8 * this.height))
+    // getting the game-height
+    const gameAreaHeight = game.gameArea.getBoundingClientRect().height;
+    
+    // creating the area where the villain can spawn
+    const areaStart = gameAreaHeight * 0.75;
+    const areaEnd = gameAreaHeight * 0.99;
+
+    // letting the villain spawn randomly
+    this.top = Math.floor(Math.random() * (areaStart - areaEnd) + areaStart);
+    
 
     // preventing the glitch in the left corner of the game-area
     this.element.style.left = this.left + 'px';
     this.element.style.top = this.top + 'px';
 
     // enemy speed which can be increased in different levels
-    this.speed = 7;
+    this.speed = 5;
 
-    if (game.level >= 3) {
+    if (game.level >= 2) {
       this.speed += 2
     }
 

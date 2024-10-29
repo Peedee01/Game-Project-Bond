@@ -16,7 +16,16 @@ class Martini {
     
     // adding a random position to the wodka-martinis
     this.left = Math.floor(Math.random() * (game.width - this.width));
-    this.top = Math.floor(Math.random() * (game.height - this.height));
+    
+    // getting the game-height
+    const gameAreaHeight = game.gameArea.getBoundingClientRect().height;
+    
+    // creating the area where the martini can spawn (same as villain)
+    const areaStart = gameAreaHeight * 0.78;
+    const areaEnd = gameAreaHeight * 0.99;
+
+    // letting the martini spawn randomly
+    this.top = Math.floor(Math.random() * (areaStart - areaEnd) + areaStart);
     
     // preventing the glitch
     this.element.style.left = this.left + 'px';

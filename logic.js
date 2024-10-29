@@ -1,5 +1,7 @@
 // this file is in charge of the game logic
 
+
+
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "a":
@@ -58,6 +60,7 @@ document.addEventListener('keydown', (e) => {
 
 let frames = 0;
 
+
 // the game loop function that runs the game
 function gameLoop() {
   if (!game.isGameOver) {
@@ -65,7 +68,7 @@ function gameLoop() {
     player.move();
     
     // every 400 frames a new martini
-    if (frames % 400 === 0) {
+    if (frames % 350 === 0) {
       new Martini();
     }
     
@@ -74,12 +77,12 @@ function gameLoop() {
       collisionTest(martini);
       
       // remove martini after a set number of frames
-      if (frames % 700 === 0) {
+      if (frames % 500 === 0) {
         martini.destroy();
         
       };
     })
-
+    
     // bullets array move and checking if the bullets hit the villain
     game.bullets.forEach((bullet) => {
       bullet.move();
@@ -87,35 +90,46 @@ function gameLoop() {
         shootTest(bullet, villain);
       })
     })
-
+    
     // looping through villains array and colissiontest
     game.villains.forEach((villain) => {
       villain.move();
       collisionTest(villain);
     })
-
-    if (frames % 50 === 0) {
+    
+    if (frames % 100 === 0) {
       new Villain();
     }
-
+    
     // every 800 frames a new level
-    if (frames % 200 === 0) {
-      new Villain();
+    if (frames % 600 === 0) {
       new Villain();
       game.level++;
       game.updateLevel();
     }
-    requestAnimationFrame(gameLoop);
+    
+    requestAnimationFrame(gameLoop)
   }
 }
 
-requestAnimationFrame(gameLoop)
+const startAreaElement = document.querySelector("#start-area");
+const startButtonElement = document.querySelector("#start-button");
+startButtonElement.addEventListener('click', () => {
+  startAreaElement.style.display = 'none'
+  startButtonElement.style.display = 'none'
+  requestAnimationFrame(gameLoop);
+  
+})
+
+// requestAnimationFrame(gameLoop)
+
+
 
 function collisionTest(object) {
   const playerLeftEdge = player.left;
   const playerRightEdge = player.left + player.width;
   const playerTopEdge = player.top;
-  const playerBottomEdge = player.top + player.height;
+  const playerBottomEdge = player.top + player.width;
 
   const objectLeftEdge = object.left;
   const objectRightEdge = object.left + object.width;
@@ -128,7 +142,7 @@ function collisionTest(object) {
     playerTopEdge < objectBottomEdge &&
     playerBottomEdge > objectTopEdge
   ) {
-    
+    // collect the martini and get one life
     if (object instanceof Martini) {
       game.lives += 1;
       game.updateLives();
@@ -140,12 +154,19 @@ function collisionTest(object) {
       game.lives--;
       game.updateLives();
       object.destroy();
-    }
-    if (game.lives <= 0) {
-      game.isGameOver = true;
+      if (game.lives <= 0) {
+        function endGame() {
+          const currentScore = document.querySelector("#score-display").textContent;
+          document.querySelector('#final-score').textContent = currentScore;
+        }
+        game.isGameOver = true;
+        endGame();
+        game.gameOverScreen.style.display = "flex";
+      }
     }
   }
 }
+
 
 function shootTest(bullet, villain) {
   const bulletLeftEdge = bullet.left;
@@ -163,13 +184,32 @@ function shootTest(bullet, villain) {
     bulletRightEdge > villainLeftEdge &&
     bulletTopEdge < villainBottomEdge &&
     bulletBottomEdge > villainTopEdge
-  ) {
+    ) {
     game.score += 100;
     game.updateScore();
     villain.destroy();
     bullet.destroy();
   }
 }
+
+function restartGame() {
+  game.isGameOver = false;
+  game.lives = 5;
+  game.gameOverScreen.style.display = 'none';
+  game.updateLives();
+  player.top = 300;
+  player.left = 0;
+
+  game = new Game();
+  player = new Player();
+  requestAnimationFrame(gameLoop);
+
+}
+
+const restartButtonElement = document.querySelector('#restart-game');
+restartButtonElement.addEventListener("click", () => {
+  restartGame();
+});
 
 
 
