@@ -32,8 +32,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  
-  
 
   h1 {
     text-align: center;
@@ -49,7 +47,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   font-size: 14px;
-  margin-left: 50px;
+  margin-left: 80px;
   margin-top: 90px;
   width: 80px;
   
@@ -94,14 +92,15 @@ body {
 
 #game-area {
   margin: 0 auto;
-  height: 97vh;
-  width: 90vw;
+  background-image: url(/assets-1/images/arena.webp);
+  height: 100vh;
+  width: 93vw;
   position: relative;
-  background-image: url(/assets-1/images/arena1.webp);
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
+
 
 #bond-image {
   width: 100px;
@@ -109,14 +108,9 @@ body {
   z-index: 999;
   margin-left: 15px;
 }
-
-#game-area2 {
-  background-image: url(/assets-1/images/arena2.webp);
-}
-
-#player, .villain, .martini, .bullet {
-  width: 112px;
-  height: 112px;
+#player, .villain, .villain2, .villain3, .villain4, .villain5 {
+  width: 117px;
+  height: 117px;
   position: absolute;
   z-index: 1;
   background-image: url(/assets-1/images/Bond.png);
@@ -127,27 +121,35 @@ body {
 }
 
 .villain {
-  background-image: url(/assets-1/images/renard.png);
+  background-image: url(/assets-1/images/soldier.png);
   background-color: transparent;
-  width: 115px;
-  height: 115px;
+  width: 120px;
+  height: 120px;
 }
 
 .villain2 {
   background-image: url(/assets-1/images/scaramanga.png);
-  width: 122px;
-  height: 122px;
+  width: 125px;
+  height: 125px;
 }
 .villain3 {
-  background-image: url(/assets-1/images/jaws.png);
-  width: 118px;
-  height: 118px;
+  background-image: url(/assets-1/images/lechiffre.png);
+  width: 130px;
+  height: 130px;
 }
+
+.villain4 {
+  background-image: url(/assets-1/images/jaws.png);
+  width: 140px;
+  height: 140px;
+}
+
 
 .martini {
   background-image: url(/assets-1/images/martini.png);
   background-size: contain;
   background-repeat: no-repeat;
+  position: absolute;
   width: 2rem;
   height: 2.5rem;
 }
@@ -188,8 +190,9 @@ body {
 
 
 .bullet {
-  width: 5px;
+  width: 6px;
   height: 4px;
+  position: absolute;
   background-image: url(/assets-1/images/bullet.png);
   background-position: center;
   background-size: cover;

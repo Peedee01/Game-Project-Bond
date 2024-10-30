@@ -15,7 +15,7 @@ class Martini {
     this.height = this.element.getBoundingClientRect().height;
     
     // adding a random position to the wodka-martinis
-    this.left = Math.floor(Math.random() * (game.width - this.width));
+    this.left = Math.floor(Math.random() * (0 + 500));
     
     // getting the game-height
     const gameAreaHeight = game.gameArea.getBoundingClientRect().height;

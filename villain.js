@@ -5,12 +5,16 @@ class Villain {
 
     this.element.classList.add("villain");
 
-    if (game.level >= 3) {
+    if (game.level >= 2) {
       this.element.classList.add("villain2");
     }
 
-    if (game.level >= 5) {
-      this.element.classList.add("villain3") && this.element.classList.add("villain");
+    if (game.level >= 3) {
+      this.element.classList.add("villain3");
+    }
+
+    if (game.level >= 4) {
+      this.element.classList.add("villain4");
     }
     // we append the child in the game-area
     game.gameArea.appendChild(this.element);
@@ -35,11 +39,16 @@ class Villain {
     this.element.style.top = this.top + 'px';
 
     // enemy speed which can be increased in different levels
-    this.speed = 6;
+    this.speed = 10;
 
-    if (game.level >= 2) {
-      this.speed += 2
+    if (game.level >= 3) {
+      this.speed += 2;
     }
+    if (game.level >= 4) {
+      this.speed += 2;
+    }
+  
+
 
     // push this villain in the villain array
     game.villains.push(this);

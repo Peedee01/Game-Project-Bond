@@ -28,7 +28,9 @@ class Game {
   updateScore() {
     this.scoreElement.innerText = "Score:  " + this.score.toString();
   }
+
 }
 
 let game = new Game();
+
 

@@ -40,7 +40,7 @@ document.addEventListener("keyup", (e) => {
 
 let lastShotTime = 0;
 // cooldowntime from shooting
-const shotCooldown = 900;
+const shotCooldown = 700;
 
 function shoot() {
   const currentTime = Date.now();
@@ -64,6 +64,7 @@ document.addEventListener('keydown', (e) => {
 let frames = 0;
 
 
+
 // the game loop function that runs the game
 function gameLoop() {
   if (!game.isGameOver) {
@@ -74,7 +75,7 @@ function gameLoop() {
 
     
     // every 400 frames a new martini
-    if (frames % 500 === 0) {
+    if (frames % 750 === 0) {
       new Martini();
     }
     
@@ -87,32 +88,43 @@ function gameLoop() {
         martini.destroy();
         
       };
-    })
+    });
     
     // bullets array move and checking if the bullets hit the villain
     game.bullets.forEach((bullet) => {
       bullet.move();
       game.villains.forEach((villain) => {
         shootTest(bullet, villain);
-      })
-    })
+      });
+    });
     
     // looping through villains array and colissiontest
     game.villains.forEach((villain) => {
       villain.move();
       collisionTest(villain);
-    })
+    });
+    
     
     if (frames % 100 === 0) {
       new Villain();
     }
+    
+
     const jamesBondSound = document.querySelector("#james-bond-sound");
     // every 900 frames a new level
     if (frames % 900 === 0) {
       jamesBondSound.play();
-      new Villain() * 3;
+      new Villain();
       game.level++;
       game.updateLevel();
+    }
+
+    if (frames % 1200 === 0) {
+      new Villain();
+    }
+
+    if (frames % 1500 === 0) {
+      new Villain();
     }
     
     requestAnimationFrame(gameLoop)
@@ -129,9 +141,9 @@ startButtonElement.addEventListener('click', () => {
   startAreaElement.style.display = 'none'
   startButtonElement.style.display = 'none'
   requestAnimationFrame(gameLoop);
-  
-  
+
 })
+
 
 
 
