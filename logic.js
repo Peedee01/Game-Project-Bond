@@ -40,12 +40,13 @@ document.addEventListener("keyup", (e) => {
 
 let lastShotTime = 0;
 // cooldowntime from shooting
-const shotCooldown = 700;
+const shotCooldown = 400;
 
 function shoot() {
   const currentTime = Date.now();
   if (currentTime - lastShotTime >= shotCooldown) {
     shootingAudio.play();
+    shootingAudio.volume = 0.3;
     new Bullet();
     lastShotTime = currentTime;
   }
@@ -75,7 +76,7 @@ function gameLoop() {
 
     
     // every 400 frames a new martini
-    if (frames % 750 === 0) {
+    if (frames % 1000 === 0) {
       new Martini();
     }
     
@@ -84,9 +85,9 @@ function gameLoop() {
       collisionTest(martini);
       
       // remove martini after a set number of frames
-      if (frames % 900 === 0) {
+      if (frames % 1300 === 0) {
         martini.destroy();
-        
+
       };
     });
     
@@ -105,7 +106,11 @@ function gameLoop() {
     });
     
     
-    if (frames % 100 === 0) {
+    if (frames % 200 === 0) {
+      new Villain();
+    }
+
+    if (frames % 500 === 0) {
       new Villain();
     }
     
@@ -114,17 +119,10 @@ function gameLoop() {
     // every 900 frames a new level
     if (frames % 900 === 0) {
       jamesBondSound.play();
+      jamesBondSound.audio = 0.7;
       new Villain();
       game.level++;
       game.updateLevel();
-    }
-
-    if (frames % 1200 === 0) {
-      new Villain();
-    }
-
-    if (frames % 1500 === 0) {
-      new Villain();
     }
     
     requestAnimationFrame(gameLoop)
@@ -136,10 +134,12 @@ const themeMusic = document.querySelector("#theme-music");
 
 const startAreaElement = document.querySelector("#start-area");
 const startButtonElement = document.querySelector(".start-button");
+const bondElement = document.querySelector("#bond-image")
 const bodyElement = document.querySelector('body');
 startButtonElement.addEventListener('click', () => {
-  startAreaElement.style.display = 'none'
-  startButtonElement.style.display = 'none'
+  startAreaElement.style.display = 'none';
+  startButtonElement.style.display = 'none';
+  bondElement.style.display = 'block';
   requestAnimationFrame(gameLoop);
 
 })
@@ -170,6 +170,7 @@ function collisionTest(object) {
     // collect the martini and get one life
     if (object instanceof Martini) {
       martiniSound.play();
+      martiniSound.audio = 0.5;
       game.lives += 1;
       game.updateLives();
       object.destroy();
@@ -193,8 +194,10 @@ function collisionTest(object) {
     // destroy villain and remove lives
     if (object instanceof Villain) {
       showBloodEffect();
-      game.lives--;
-      game.updateLives();
+      if (game.level >= 1) {
+        game.lives--;
+        game.updateLives();
+     }
       object.destroy();
       if (game.lives <= 0) {
         function endGame() {
@@ -229,10 +232,16 @@ function shootTest(bullet, villain) {
     bulletLeftEdge < villainRightEdge &&
     bulletRightEdge > villainLeftEdge &&
     bulletTopEdge < villainBottomEdge &&
-    bulletBottomEdge > villainTopEdge
-    ) {
-    game.score += 100;
-    game.updateScore();
+    bulletBottomEdge > villainTopEdge 
+  ) {
+    if (game.level >= 1) {
+      game.score += 100;
+      game.updateScore(); 
+    }
+    if (game.level >= 3) {
+      game.score += 300;
+      game.updateScore();
+    }
     villain.destroy();
     bullet.destroy();
   }

@@ -1,12 +1,15 @@
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face {
+  font-family: 'Goldeneye';
+  src: url(//Users/phsdevelopment/Desktop/007Goldeneye-vnxD.ttf);
+}
 
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 body {
@@ -16,7 +19,6 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #start-area {
@@ -32,24 +34,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  font-family: 'Goldeneye';
 
-  h1 {
-    text-align: center;
-  }
-
-  img {
-    width: 300px;
-  }
-  
 }
 
-#buttons {
+#bond-image {
+  display: none;
+}
+
+#buttonscontainer {
   flex-direction: column;
   justify-content: flex-start;
-  font-size: 14px;
-  margin-left: 80px;
+  margin-left: 60px;
   margin-top: 90px;
-  width: 80px;
+  width: 100px;
   
 
   button {
@@ -58,14 +56,14 @@ body {
     border-style: none;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    padding: 5px;
-    width: 90px;
+    padding: 5px 10px 5px 10px;
+    width: 150px;
     font-size: 15px;
-   
+    text-align: start;
   }
 }
 
-#buttons button:hover {
+#buttonscontainer button:hover {
   background-color: white;
   color: black;
   transition: all 0.3s ease;
@@ -78,7 +76,7 @@ body {
 #welcome-message {
   background-color: rgb(31, 31, 31);
   box-shadow: 0px 0px 20px 0px rgba(105, 105, 105, 0.47);
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid rgb(169, 169, 169);
   flex-direction: row;
@@ -86,6 +84,14 @@ body {
   width: 300px;
   margin-top: 50px;
   margin-right: 50px;
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
 
 
@@ -94,23 +100,22 @@ body {
   margin: 0 auto;
   background-image: url(/assets-1/images/arena.webp);
   height: 100vh;
-  width: 93vw;
+  width: 88vw;
   position: relative;
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
 
-
 #bond-image {
   width: 100px;
   position: absolute;
   z-index: 999;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 #player, .villain, .villain2, .villain3, .villain4, .villain5 {
-  width: 117px;
-  height: 117px;
+  width: 118px;
+  height: 118px;
   position: absolute;
   z-index: 1;
   background-image: url(/assets-1/images/Bond.png);
@@ -129,21 +134,20 @@ body {
 
 .villain2 {
   background-image: url(/assets-1/images/scaramanga.png);
-  width: 125px;
-  height: 125px;
+  width: 130px;
+  height: 130px;
 }
 .villain3 {
   background-image: url(/assets-1/images/lechiffre.png);
-  width: 130px;
-  height: 130px;
+  width: 132px;
+  height: 132px;
 }
 
 .villain4 {
   background-image: url(/assets-1/images/jaws.png);
-  width: 140px;
-  height: 140px;
+  width: 135px;
+  height: 135px;
 }
-
 
 .martini {
   background-image: url(/assets-1/images/martini.png);
@@ -157,35 +161,37 @@ body {
 #lives-display {
   position: absolute;
   background-color: rgb(1, 1, 1);
-  border-radius: 10px;
-  padding: 5px;
+  border-style: none;
+  border-radius: 15px;
+  padding: 7px;
+  font-size: 20px;
   margin-bottom: 10px;
   z-index: 2;
-  top: 5rem;
-  left: 1rem;
-  box-shadow: 0px 0px 20px 0px rgba(23, 23, 23, 0.47);
+  top: 5.3rem;
+  left: 1.5rem;
+  box-shadow: 0px 0px 20px 0px rgba(121, 121, 121, 0.886);
 }
 
 #score-display {
   position: absolute;
   color: white;
-  left: 1rem;
-  top: 7rem;
+  left: 1.5rem;
+  top: 8.5rem;
   font-size: 20px;
-  box-shadow: 0px 0px 20px 0px rgba(23, 23, 23, 0.47);
+  box-shadow: 0px 0px 20px 0px rgba(121, 121, 121, 0.886);
 }
 #levels-display {
   position: absolute;
   font-size: 27px;
   z-index: 2;
   top: 1rem;
-  left: 1rem;
+  left: 1.5rem;
   background-color: rgb(0, 0, 0);
   border-radius: 8px;
-  padding: 10px 20px 10px 105px;
-  width: 225px;
+  padding: 10px 20px 10px 110px;
+  width: 250px;
   color: white;
-  box-shadow: 0px 0px 20px 0px rgba(81, 81, 81, 0.47);
+  box-shadow: 0px 0px 20px 0px rgba(121, 121, 121, 0.886);
 }
 
 

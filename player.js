@@ -7,7 +7,7 @@ class Player {
     this.height = this.element.getBoundingClientRect().height;
     this.left = 0;
     this.top = 300;
-    this.speed = 10;
+    this.speed = 12;
     this.direction = 0;
   } 
   
