@@ -40,16 +40,19 @@ document.addEventListener("keyup", (e) => {
 
 let lastShotTime = 0;
 // cooldowntime from shooting
-const shotCooldown = 750;
+const shotCooldown = 900;
 
 function shoot() {
   const currentTime = Date.now();
   if (currentTime - lastShotTime >= shotCooldown) {
+    shootingAudio.play();
     new Bullet();
     lastShotTime = currentTime;
   }
 }
 
+// sound for shooting
+const shootingAudio = document.querySelector("#shooting-audio")
 // shooting mechanics
 document.addEventListener('keydown', (e) => {
   if (e.code === "Space") {
@@ -64,11 +67,14 @@ let frames = 0;
 // the game loop function that runs the game
 function gameLoop() {
   if (!game.isGameOver) {
+    themeMusic.play();
+    themeMusic.loop = true;
     frames++;
     player.move();
+
     
     // every 400 frames a new martini
-    if (frames % 350 === 0) {
+    if (frames % 500 === 0) {
       new Martini();
     }
     
@@ -77,7 +83,7 @@ function gameLoop() {
       collisionTest(martini);
       
       // remove martini after a set number of frames
-      if (frames % 500 === 0) {
+      if (frames % 900 === 0) {
         martini.destroy();
         
       };
@@ -100,10 +106,11 @@ function gameLoop() {
     if (frames % 100 === 0) {
       new Villain();
     }
-    
-    // every 800 frames a new level
-    if (frames % 600 === 0) {
-      new Villain();
+    const jamesBondSound = document.querySelector("#james-bond-sound");
+    // every 900 frames a new level
+    if (frames % 900 === 0) {
+      jamesBondSound.play();
+      new Villain() * 3;
       game.level++;
       game.updateLevel();
     }
@@ -112,16 +119,19 @@ function gameLoop() {
   }
 }
 
+const themeMusic = document.querySelector("#theme-music");
+
+
 const startAreaElement = document.querySelector("#start-area");
-const startButtonElement = document.querySelector("#start-button");
+const startButtonElement = document.querySelector(".start-button");
+const bodyElement = document.querySelector('body');
 startButtonElement.addEventListener('click', () => {
   startAreaElement.style.display = 'none'
   startButtonElement.style.display = 'none'
   requestAnimationFrame(gameLoop);
   
+  
 })
-
-// requestAnimationFrame(gameLoop)
 
 
 
@@ -130,7 +140,7 @@ function collisionTest(object) {
   const playerRightEdge = player.left + player.width;
   const playerTopEdge = player.top;
   const playerBottomEdge = player.top + player.width;
-
+  
   const objectLeftEdge = object.left;
   const objectRightEdge = object.left + object.width;
   const objectTopEdge = object.top;
@@ -142,22 +152,45 @@ function collisionTest(object) {
     playerTopEdge < objectBottomEdge &&
     playerBottomEdge > objectTopEdge
   ) {
+
+    // martini sound
+    const martiniSound = document.querySelector("#martini-sound");
     // collect the martini and get one life
     if (object instanceof Martini) {
+      martiniSound.play();
       game.lives += 1;
       game.updateLives();
       object.destroy();
     }
+    
+    // function to show blood-effect after the player gets hit
+    function showBloodEffect() {
+      const bloodElement = document.querySelector("#blood");
+      bloodElement.style.display = 'flex';
+      gotHitAudio.play();
+      setTimeout(() => {
+        bloodElement.style.display = 'none';
+      }, 200);
+    }
+    
+    // sound after player gets hit
+    const gotHitAudio = document.querySelector("#got-hit-audio");
 
+    // sound after dying
+    const agentFallAudio = document.querySelector("#agent-fall-audio");
     // destroy villain and remove lives
     if (object instanceof Villain) {
+      showBloodEffect();
       game.lives--;
       game.updateLives();
       object.destroy();
       if (game.lives <= 0) {
         function endGame() {
+          agentFallAudio.play();
+          themeMusic.pause();
           const currentScore = document.querySelector("#score-display").textContent;
           document.querySelector('#final-score').textContent = currentScore;
+          showBloodEffect();
         }
         game.isGameOver = true;
         endGame();
@@ -166,6 +199,7 @@ function collisionTest(object) {
     }
   }
 }
+
 
 
 function shootTest(bullet, villain) {
@@ -199,6 +233,7 @@ function restartGame() {
   game.updateLives();
   player.top = 300;
   player.left = 0;
+  themeMusic.currentTime = 0;
 
   game = new Game();
   player = new Player();
@@ -213,9 +248,5 @@ restartButtonElement.addEventListener("click", () => {
 
 
 
-// sounds
-// window.addEventListener('click', () => {
-//   const audio = document.querySelector('#theme-music')
-//   audio.play();
-// })
+
 

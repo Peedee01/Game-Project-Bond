@@ -6,24 +6,39 @@
   <title>007 LEGACY</title>
   <link rel="icon" type="image/x-icon" href="./assets-1/images/bondfavicon.png">
   <link rel="stylesheet" href="styles/styles.css">
-  
-  <!-- <audio id="theme-music" src="assets/sounds/the-names-bond-101soundboards.mp3"></audio> -->
+  <!-- audio -->
+  <audio id="theme-music" src="assets/sounds/007 Legacy Game Music.mp3"></audio>
+  <audio id="got-hit-audio" src="/assets/sounds/mixkit-strong-punches-to-the-body-2198.wav"></audio>
+  <audio id="agent-fall-audio" src="/assets/sounds/heavy-cineamtic-hit-166888.mp3"></audio>
+  <audio id="shooting-audio" src="/assets/sounds/gunshot.mp3"></audio>
+  <audio id="martini-sound" src="/assets/sounds/a-martini-shaken-not-stirred-101soundboards.mp3"></audio>
+  <audio id="james-bond-sound"  src="/assets/sounds/the-names-bond-101soundboards.mp3"></audio>
 </head>
 
 <body>
 
-
-  <section id="game-area">
-    <div id="start-area">
-      <img src="assets-1/images/007.png" alt="007">
-      <h1>Legacy</h1>
-      <button id="start-button"> start the game now!</button>
+  <div id="start-area">
+    <div id="buttons">
+      <button class="start-button"> New Game </button>
+      <button> Rules</button>
     </div>
       
+    <div id="welcome-message">
+      <h1>007 Legacy</h1>
+      <p>The Mission: Eliminate as many Bond villains as you can to
+        rack up a high score. Each level brings tougher and faster villains. <br> Collect Vodka Martinis along the way to
+        gain extra lives, and use your license to kill to survive as long as possible. <br> Good luck mr. Bond</p>
+    </div>
+    </div>
+    
+    
+    <section id="game-area">
     <div id="player"></div>
     <span id="lives-display"> ❤️ </span>
-    <span id="levels-display"></span>
+    <img id="bond-image" src="/assets-1/images/007.png" alt="007" width="100px">
+    <span id="levels-display"> </span>
     <span id="score-display"></span>
+    <div id="blood"></div>
   </section>
   <section id="game-over">
     <h2> Even the greatest agents Fall</h2>

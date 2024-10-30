@@ -9,7 +9,7 @@ class Bullet {
     // position at the players location
     this.left = player.left + player.width;
     this.top = player.top + 0.2 * player.height;
-    this.speed = 13;
+    this.speed = 10;
     
     game.gameArea.appendChild(this.element);
     this.element.style.left = this.left + 'px';

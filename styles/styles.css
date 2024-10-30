@@ -6,30 +6,33 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 1.5;
 }
 
 body {
-  min-height: 100vh;
+  min-height: 95vh;
   align-content: center;
-  background-image: url(/assets-1/images/background.jpg);
-  background-size: cover;
+  background-image: url(/assets-1/images/Background.jpg);
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #start-area {
-  background-color:  rgba(0, 0, 0, 0.717);
+  background-image: url(/assets-1/images/legacy.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: white;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 999;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  
   
 
   h1 {
@@ -42,10 +45,49 @@ body {
   
 }
 
-#start-button {
-  margin: 0 auto;
-  padding: 10px;
+#buttons {
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 14px;
+  margin-left: 50px;
+  margin-top: 90px;
+  width: 80px;
+  
 
+  button {
+    background-color: rgb(35, 35, 35);
+    color: white;
+    border-style: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    width: 90px;
+    font-size: 15px;
+   
+  }
+}
+
+#buttons button:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+#rules {
+  margin-top: 0;
+}
+
+#welcome-message {
+  background-color: rgb(31, 31, 31);
+  box-shadow: 0px 0px 20px 0px rgba(105, 105, 105, 0.47);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(169, 169, 169);
+  flex-direction: row;
+  text-align: center; 
+  width: 300px;
+  margin-top: 50px;
+  margin-right: 50px;
 }
 
 
@@ -61,13 +103,20 @@ body {
   overflow: hidden;
 }
 
+#bond-image {
+  width: 100px;
+  position: absolute;
+  z-index: 999;
+  margin-left: 15px;
+}
+
 #game-area2 {
   background-image: url(/assets-1/images/arena2.webp);
 }
 
 #player, .villain, .martini, .bullet {
-  width: 118px;
-  height: 118px;
+  width: 112px;
+  height: 112px;
   position: absolute;
   z-index: 1;
   background-image: url(/assets-1/images/Bond.png);
@@ -80,8 +129,8 @@ body {
 .villain {
   background-image: url(/assets-1/images/renard.png);
   background-color: transparent;
-  width: 120px;
-  height: 120px;
+  width: 115px;
+  height: 115px;
 }
 
 .villain2 {
@@ -91,8 +140,8 @@ body {
 }
 .villain3 {
   background-image: url(/assets-1/images/jaws.png);
-  width: 125px;
-  height: 125px;
+  width: 118px;
+  height: 118px;
 }
 
 .martini {
@@ -105,32 +154,36 @@ body {
 
 #lives-display {
   position: absolute;
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(1, 1, 1);
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 10px;
   z-index: 2;
-  top: 3rem;
+  top: 5rem;
   left: 1rem;
+  box-shadow: 0px 0px 20px 0px rgba(23, 23, 23, 0.47);
 }
 
 #score-display {
   position: absolute;
   color: white;
   left: 1rem;
-  top: 5.5rem;
+  top: 7rem;
   font-size: 20px;
+  box-shadow: 0px 0px 20px 0px rgba(23, 23, 23, 0.47);
 }
 #levels-display {
   position: absolute;
-  font-size: 1rem;
+  font-size: 27px;
   z-index: 2;
   top: 1rem;
   left: 1rem;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   border-radius: 8px;
-  padding: 5px;
+  padding: 10px 20px 10px 105px;
+  width: 225px;
   color: white;
+  box-shadow: 0px 0px 20px 0px rgba(81, 81, 81, 0.47);
 }
 
 
@@ -142,6 +195,22 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: transparent;
+}
+
+#blood {
+  background-image: url(/assets-1/images/blood.png);
+  position: absolute;
+  z-index: 999;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 #game-over {
@@ -171,8 +240,13 @@ body {
 
 }
 
+#final-score {
+  font-size: 20px;
+}
+
 #restart-game {
   padding: 10px;
+  width: 80px;
   color: rgb(0, 0, 0);
   border-style: none;
   border-radius: 10px;

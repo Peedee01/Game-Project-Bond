@@ -12,6 +12,7 @@ class Game {
     this.martinis = [];
     this.bullets = [];
     this.levelElement = document.querySelector("#levels-display");
+    this.levelElement.innerText = "START"
     this.livesElement = document.querySelector("#lives-display");
     this.scoreElement = document.querySelector("#score-display");
     this.gameOverScreen = document.querySelector("#game-over");
@@ -22,10 +23,10 @@ class Game {
     this.livesElement.innerText = "❤️".repeat(this.lives);
   }
   updateLevel() {
-    this.levelElement.innerText = " 007 - LEVEL:  " + this.level.toString();
+    this.levelElement.innerText = "LEVEL:  " + this.level.toString();
   }
   updateScore() {
-    this.scoreElement.innerText = "SCORE:  " + this.score.toString();
+    this.scoreElement.innerText = "Score:  " + this.score.toString();
   }
 }
 
