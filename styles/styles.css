@@ -138,8 +138,8 @@ body {
 .villain3,
 .villain4,
 .villain5 {
-  width: 118px;
-  height: 118px;
+  width: 120px;
+  height: 120px;
   position: absolute;
   z-index: 1;
   background-image: url(../Assets/images/Bond.png);
@@ -152,8 +152,8 @@ body {
 .villain {
   background-image: url(../Assets/images/soldier.png);
   background-color: transparent;
-  width: 120px;
-  height: 120px;
+  width: 123px;
+  height: 123px;
   animation: pulse 2s infinite;
 }
 
@@ -179,8 +179,8 @@ body {
 
 .villain5 {
   background-image: url(../Assets/images/renard.png);
-  width: 137px;
-  height: 137px;
+  width: 140px;
+  height: 140px;
   animation: pulse 2s infinite;
 }
 
@@ -261,7 +261,7 @@ body {
   background-color: rgb(0, 0, 0);
   border-radius: 8px;
   padding: 3px 20px 3px 110px;
-  width: 250px;
+  width: 260px;
   color: white;
   box-shadow: 0px 0px 20px 0px rgba(44, 44, 44, 0.886);
 
