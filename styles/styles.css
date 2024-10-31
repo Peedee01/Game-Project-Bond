@@ -21,7 +21,7 @@ body {
 }
 
 #start-area {
-  background-image: url(/Assets/images/legacy.png);
+  background-image: url(../Assets/images/legacy.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -115,7 +115,7 @@ body {
 
 #game-area {
   margin: 0 auto;
-  background-image: url(/Assets/images/arena.webp);
+  background-image: url(../Assets/images/arena.webp);
   height: 100vh;
   width: 88vw;
   position: relative;
@@ -142,7 +142,7 @@ body {
   height: 118px;
   position: absolute;
   z-index: 1;
-  background-image: url(/Assets/images/Bond.png);
+  background-image: url(../Assets/images/Bond.png);
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
@@ -150,31 +150,38 @@ body {
 }
 
 .villain {
-  background-image: url(/assets-1/images/soldier.png);
+  background-image: url(../Assets/images/soldier.png);
   background-color: transparent;
   width: 120px;
   height: 120px;
-  animation: pulse 2s infinite;
+  animation: pulse 1s infinite;
 }
 
 .villain2 {
-  background-image: url(/assets-1/images/scaramanga.png);
+  background-image: url(../Assets/images/scaramanga.png);
   width: 130px;
   height: 130px;
-  animation: pulse 2s infinite;
+  animation: pulse 1s infinite;
 }
 .villain3 {
-  background-image: url(/assets-1/images/lechiffre.png);
+  background-image: url(../Assets/images/lechiffre.png);
   width: 132px;
   height: 132px;
-  animation: pulse 2s infinite;
+  animation: pulse 1s infinite;
 }
 
 .villain4 {
-  background-image: url(/assets-1/images/jaws.png);
-  width: 135px;
-  height: 135px;
-  animation: pulse 0.5s infinite;
+  background-image: url(..//Assets/images/renard.png);
+  width: 133px;
+  height: 133px;
+  animation: pulse 1s infinite;
+}
+
+.villain5 {
+  background-image: url(../Assets/images/renard.png);
+  width: 137px;
+  height: 137px;
+  animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
@@ -211,7 +218,7 @@ body {
 }
 
 .martini {
-  background-image: url(/assets-1/images/martini.png);
+  background-image: url(../Assets/images/martini.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -267,7 +274,7 @@ body {
   width: 8px;
   height: 5px;
   position: absolute;
-  background-image: url(/assets-1/images/bullet.png);
+  background-image: url(../Assets/images/bullet.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -275,7 +282,7 @@ body {
 }
 
 #blood {
-  background-image: url(/assets-1/images/blood.png);
+  background-image: url(../Assets/images/blood.png);
   position: absolute;
   z-index: 999;
   display: none;
@@ -293,7 +300,7 @@ body {
 #game-over {
   height: 100vh;
   width: 100vw;
-  background-image: url(/assets-1/images/barrel.png);
+  background-image: url(../Assets/images/barrel.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
