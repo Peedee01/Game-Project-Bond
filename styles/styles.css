@@ -14,7 +14,7 @@
 body {
   min-height: 95vh;
   align-content: center;
-  background-image: url(/Assets/images/Background.jpg);
+  background-image: url(../Assets/images/Background.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
