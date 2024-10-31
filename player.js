@@ -6,7 +6,7 @@ class Player {
     this.width = this.element.getBoundingClientRect().width;
     this.height = this.element.getBoundingClientRect().height;
     this.left = 0;
-    this.top = 330;
+    this.top = 350;
     this.speed = 12;
     this.direction = 0;
   }
@@ -14,8 +14,8 @@ class Player {
   move() {
     switch (this.direction) {
       case "up":
-        if (this.top <= 330) {
-          this.top = 330;
+        if (this.top <= 350) {
+          this.top = 350;
         } else {
           this.top -= this.speed;
         }
