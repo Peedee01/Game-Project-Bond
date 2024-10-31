@@ -263,7 +263,7 @@ function restartGame() {
   game.lives = 5;
   game.gameOverScreen.style.display = "none";
   game.updateLives();
-  player.top = 300;
+  player.top = 370;
   player.left = 0;
   themeMusic.currentTime = 0;
 

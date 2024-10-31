@@ -38,7 +38,7 @@ class Villain {
     this.element.style.top = this.top + "px";
 
     // enemy speed which can be increased in different levels
-    this.speed = 8;
+    this.speed = 9;
 
     if (game.level >= 1) {
       this.speed += 1;
