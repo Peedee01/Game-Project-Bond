@@ -138,8 +138,8 @@ body {
 .villain3,
 .villain4,
 .villain5 {
-  width: 120px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   position: absolute;
   z-index: 1;
   background-image: url(../Assets/images/Bond.png);
@@ -152,35 +152,35 @@ body {
 .villain {
   background-image: url(../Assets/images/soldier.png);
   background-color: transparent;
-  width: 123px;
-  height: 123px;
+  width: 127px;
+  height: 127px;
   animation: pulse 2s infinite;
 }
 
 .villain2 {
   background-image: url(../Assets/images/scaramanga.png);
-  width: 130px;
-  height: 130px;
+  width: 133px;
+  height: 133px;
   animation: pulse 2s infinite;
 }
 .villain3 {
   background-image: url(../Assets/images/lechiffre.png);
-  width: 132px;
-  height: 132px;
+  width: 137px;
+  height: 137px;
   animation: pulse 2s infinite;
 }
 
 .villain4 {
   background-image: url(..//Assets/images/renard.png);
-  width: 133px;
-  height: 133px;
+  width: 140px;
+  height: 140px;
   animation: pulse 2s infinite;
 }
 
 .villain5 {
   background-image: url(../Assets/images/renard.png);
-  width: 140px;
-  height: 140px;
+  width: 143px;
+  height: 143px;
   animation: pulse 2s infinite;
 }
 
