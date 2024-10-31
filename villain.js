@@ -16,6 +16,10 @@ class Villain {
     if (game.level >= 4) {
       this.element.classList.add("villain4");
     }
+
+    if (game.level >= 5) {
+      this.element.classList.add("villain5");
+    }
     // we append the child in the game-area
     game.gameArea.appendChild(this.element);
 

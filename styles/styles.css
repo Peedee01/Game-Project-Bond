@@ -116,7 +116,7 @@ body {
 #game-area {
   margin: 0 auto;
   background-image: url(../Assets/images/arena.webp);
-  height: 95vh;
+  height: 90vh;
   width: 88vw;
   position: relative;
   background-position: center;
@@ -272,7 +272,7 @@ body {
 
 .bullet {
   width: 8px;
-  height: 5px;
+  height: 8px;
   position: absolute;
   background-image: url(../Assets/images/bullet.png);
   background-position: center;
