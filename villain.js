@@ -31,7 +31,7 @@ class Villain {
     const gameAreaHeight = game.gameArea.getBoundingClientRect().height;
 
     // creating the area where the villain can spawn
-    const areaStart = gameAreaHeight * 0.85;
+    const areaStart = gameAreaHeight * 0.88;
     const areaEnd = gameAreaHeight * 0.99;
 
     // letting the villain spawn randomly
