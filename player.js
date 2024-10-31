@@ -14,8 +14,8 @@ class Player {
   move() {
     switch (this.direction) {
       case "up":
-        if (this.top <= 390) {
-          this.top = 390;
+        if (this.top <= 400) {
+          this.top = 400;
         } else {
           this.top -= this.speed;
         }
