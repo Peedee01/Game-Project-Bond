@@ -14,14 +14,14 @@
 body {
   min-height: 95vh;
   align-content: center;
-  background-image: url(/assets-1/images/Background.jpg);
+  background-image: url(/Assets/images/Background.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 #start-area {
-  background-image: url(/assets-1/images/legacy.png);
+  background-image: url(/Assets/images/legacy.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -115,7 +115,7 @@ body {
 
 #game-area {
   margin: 0 auto;
-  background-image: url(/assets-1/images/arena.webp);
+  background-image: url(/Assets/images/arena.webp);
   height: 100vh;
   width: 88vw;
   position: relative;
@@ -142,7 +142,7 @@ body {
   height: 118px;
   position: absolute;
   z-index: 1;
-  background-image: url(/assets-1/images/Bond.png);
+  background-image: url(/Assets/images/Bond.png);
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
