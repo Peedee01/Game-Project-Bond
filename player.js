@@ -2,15 +2,15 @@
 
 class Player {
   constructor() {
-    this.element = document.querySelector('#player');
+    this.element = document.querySelector("#player");
     this.width = this.element.getBoundingClientRect().width;
     this.height = this.element.getBoundingClientRect().height;
     this.left = 0;
     this.top = 300;
     this.speed = 12;
     this.direction = 0;
-  } 
-  
+  }
+
   move() {
     switch (this.direction) {
       case "up":
@@ -48,6 +48,3 @@ class Player {
 }
 
 let player = new Player();
-
-
-

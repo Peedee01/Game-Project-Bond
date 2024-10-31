@@ -1,7 +1,6 @@
-// this file is in charge of the game logic
+// the game logic file
 
-
-
+// methods for walking in the game area wasd and arrow-keys
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "a":
@@ -17,8 +16,8 @@ document.addEventListener("keydown", (e) => {
       player.direction = "down";
       break;
     case "w":
-    case "ArrowUp" :
-      player.direction = "up"
+    case "ArrowUp":
+      player.direction = "up";
       break;
   }
 });
@@ -37,34 +36,31 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-
 let lastShotTime = 0;
 // cooldowntime from shooting
-const shotCooldown = 400;
+const shotCooldown = 700;
 
 function shoot() {
   const currentTime = Date.now();
   if (currentTime - lastShotTime >= shotCooldown) {
     shootingAudio.play();
-    shootingAudio.volume = 0.3;
+    shootingAudio.playbackRate = 2.5;
+    shootingAudio.volume = 0.5;
     new Bullet();
     lastShotTime = currentTime;
   }
 }
 
 // sound for shooting
-const shootingAudio = document.querySelector("#shooting-audio")
+const shootingAudio = document.querySelector("#shooting-audio");
 // shooting mechanics
-document.addEventListener('keydown', (e) => {
+document.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
     shoot();
   }
-})
-
+});
 
 let frames = 0;
-
-
 
 // the game loop function that runs the game
 function gameLoop() {
@@ -74,23 +70,21 @@ function gameLoop() {
     frames++;
     player.move();
 
-    
-    // every 400 frames a new martini
+    // every 1000 frames a new martini
     if (frames % 1000 === 0) {
       new Martini();
     }
-    
+
     game.martinis.forEach((martini) => {
       // check the collision with the martinis
       collisionTest(martini);
-      
-      // remove martini after a set number of frames
+
+      // destroy the martinis
       if (frames % 1300 === 0) {
         martini.destroy();
-
-      };
+      }
     });
-    
+
     // bullets array move and checking if the bullets hit the villain
     game.bullets.forEach((bullet) => {
       bullet.move();
@@ -98,22 +92,20 @@ function gameLoop() {
         shootTest(bullet, villain);
       });
     });
-    
+
     // looping through villains array and colissiontest
     game.villains.forEach((villain) => {
       villain.move();
       collisionTest(villain);
     });
-    
-    
-    if (frames % 200 === 0) {
+
+    if (frames % 250 === 0) {
       new Villain();
     }
 
-    if (frames % 500 === 0) {
+    if (frames % 600 === 0) {
       new Villain();
     }
-    
 
     const jamesBondSound = document.querySelector("#james-bond-sound");
     // every 900 frames a new level
@@ -124,47 +116,56 @@ function gameLoop() {
       game.level++;
       game.updateLevel();
     }
-    
-    requestAnimationFrame(gameLoop)
+
+    requestAnimationFrame(gameLoop);
   }
 }
 
 const themeMusic = document.querySelector("#theme-music");
 
-
+// start-area events
 const startAreaElement = document.querySelector("#start-area");
 const startButtonElement = document.querySelector(".start-button");
-const bondElement = document.querySelector("#bond-image")
-const bodyElement = document.querySelector('body');
-startButtonElement.addEventListener('click', () => {
-  startAreaElement.style.display = 'none';
-  startButtonElement.style.display = 'none';
-  bondElement.style.display = 'block';
+const instructionsButtonElement = document.querySelector(
+  ".instructions-button"
+);
+const instructionsAreaElement = document.querySelector(
+  ".instructions-not-visible"
+);
+const bondElement = document.querySelector("#bond-image");
+const bodyElement = document.querySelector("body");
+
+instructionsButtonElement.addEventListener("click", () => {
+  instructionsAreaElement.classList.toggle("instructions-not-visible");
+  instructionsAreaElement.classList.toggle("instructions-visible");
+});
+
+// start game
+startButtonElement.addEventListener("click", () => {
+  startAreaElement.style.display = "none";
+  startButtonElement.style.display = "none";
+  bondElement.style.display = "block";
   requestAnimationFrame(gameLoop);
+});
 
-})
-
-
-
-
+// colission function with different objects
 function collisionTest(object) {
   const playerLeftEdge = player.left;
   const playerRightEdge = player.left + player.width;
   const playerTopEdge = player.top;
   const playerBottomEdge = player.top + player.width;
-  
+
   const objectLeftEdge = object.left;
   const objectRightEdge = object.left + object.width;
   const objectTopEdge = object.top;
   const objectBottomEdge = object.top + object.height;
-  
+
   if (
     playerLeftEdge < objectRightEdge &&
     playerRightEdge > objectLeftEdge &&
     playerTopEdge < objectBottomEdge &&
     playerBottomEdge > objectTopEdge
   ) {
-
     // martini sound
     const martiniSound = document.querySelector("#martini-sound");
     // collect the martini and get one life
@@ -175,17 +176,17 @@ function collisionTest(object) {
       game.updateLives();
       object.destroy();
     }
-    
+
     // function to show blood-effect after the player gets hit
     function showBloodEffect() {
       const bloodElement = document.querySelector("#blood");
-      bloodElement.style.display = 'flex';
+      bloodElement.style.display = "flex";
       gotHitAudio.play();
       setTimeout(() => {
-        bloodElement.style.display = 'none';
+        bloodElement.style.display = "none";
       }, 200);
     }
-    
+
     // sound after player gets hit
     const gotHitAudio = document.querySelector("#got-hit-audio");
 
@@ -197,15 +198,15 @@ function collisionTest(object) {
       if (game.level >= 1) {
         game.lives--;
         game.updateLives();
-     }
+      }
       object.destroy();
       if (game.lives <= 0) {
         function endGame() {
           agentFallAudio.play();
           themeMusic.pause();
-          const currentScore = document.querySelector("#score-display").textContent;
-          document.querySelector('#final-score').textContent = currentScore;
-          showBloodEffect();
+          const currentScore =
+            document.querySelector("#score-display").textContent;
+          document.querySelector("#final-score").textContent = currentScore;
         }
         game.isGameOver = true;
         endGame();
@@ -215,8 +216,7 @@ function collisionTest(object) {
   }
 }
 
-
-
+// shooting colission function with score update that change with level difficulty
 function shootTest(bullet, villain) {
   const bulletLeftEdge = bullet.left;
   const bulletRightEdge = bullet.left + bullet.width;
@@ -227,16 +227,16 @@ function shootTest(bullet, villain) {
   const villainRightEdge = villain.left + villain.width;
   const villainTopEdge = villain.top;
   const villainBottomEdge = villain.top + villain.height;
-  
+
   if (
     bulletLeftEdge < villainRightEdge &&
     bulletRightEdge > villainLeftEdge &&
     bulletTopEdge < villainBottomEdge &&
-    bulletBottomEdge > villainTopEdge 
+    bulletBottomEdge > villainTopEdge
   ) {
     if (game.level >= 1) {
       game.score += 100;
-      game.updateScore(); 
+      game.updateScore();
     }
     if (game.level >= 3) {
       game.score += 300;
@@ -247,27 +247,33 @@ function shootTest(bullet, villain) {
   }
 }
 
+// function to destroy everything when you restart the game
+function destroyEverything(objects) {
+  objects.forEach((object) => {
+    object.destroy();
+  });
+}
+
+// function to restart the game
 function restartGame() {
+  destroyEverything(game.martinis);
+  destroyEverything(game.villains);
+  destroyEverything(game.bullets);
   game.isGameOver = false;
   game.lives = 5;
-  game.gameOverScreen.style.display = 'none';
+  game.gameOverScreen.style.display = "none";
   game.updateLives();
   player.top = 300;
   player.left = 0;
   themeMusic.currentTime = 0;
 
   game = new Game();
+
   player = new Player();
   requestAnimationFrame(gameLoop);
-
 }
 
-const restartButtonElement = document.querySelector('#restart-game');
+const restartButtonElement = document.querySelector("#restart-game");
 restartButtonElement.addEventListener("click", () => {
   restartGame();
 });
-
-
-
-
-

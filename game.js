@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.isGameOver = false;
-    this.lives = 5;
+    this.lives = 4;
     this.level = 0;
     this.score = 0;
     this.startScreen = document.querySelector("#start-screen");
@@ -12,7 +12,7 @@ class Game {
     this.martinis = [];
     this.bullets = [];
     this.levelElement = document.querySelector("#levels-display");
-    this.levelElement.innerText = "LEVEL: 0"
+    this.levelElement.innerText = "LEVEL: 0";
     this.livesElement = document.querySelector("#lives-display");
     this.bondElement = document.querySelector("#bond-image");
     this.scoreElement = document.querySelector("#score-display");
@@ -21,7 +21,7 @@ class Game {
   }
 
   updateLives() {
-    this.livesElement.innerText = "♥️".repeat(this.lives);
+    this.livesElement.innerText = "❤️".repeat(this.lives);
   }
   updateLevel() {
     this.levelElement.innerText = "LEVEL:  " + this.level.toString();
@@ -29,9 +29,6 @@ class Game {
   updateScore() {
     this.scoreElement.innerText = "Score:  " + this.score.toString();
   }
-
 }
 
 let game = new Game();
-
-

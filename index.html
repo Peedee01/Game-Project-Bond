@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,9 @@
   <audio id="theme-music" src="assets/sounds/007 Legacy Game Music.mp3"></audio>
   <audio id="got-hit-audio" src="/assets/sounds/mixkit-strong-punches-to-the-body-2198.wav"></audio>
   <audio id="agent-fall-audio" src="/assets/sounds/heavy-cineamtic-hit-166888.mp3"></audio>
-  <audio id="shooting-audio" src="/assets/sounds/gunshot.mp3"></audio>
+  <audio id="shooting-audio" src="/assets/sounds/submachine-gun-79846.mp3"></audio>
   <audio id="martini-sound" src="/assets/sounds/a-martini-shaken-not-stirred-101soundboards.mp3"></audio>
-  <audio id="james-bond-sound"  src="/assets/sounds/the-names-bond-101soundboards.mp3"></audio>
+  <audio id="james-bond-sound" src="/assets/sounds/the-names-bond-101soundboards.mp3"></audio>
 </head>
 
 <body>
@@ -20,21 +21,30 @@
   <div id="start-area">
     <div id="buttonscontainer">
       <button class="start-button"> NEW GAME</button>
-      <button> RULES</button>
+      <button class="instructions-button"> INSTRUCTIONS </button>
+
+      <div class="instructions-not-visible">
+        <ul>
+          <p>How to Play - 🎮</p>
+          <li>Move Agent 🕵️ : Use WASD or Arrow Keys to move around and dodge Villains. </li>
+          <li>Shoot Villains 🦹 : Press Space to fire bullets.</li>
+          <li>Collect Martinis🍸 : Find martinis for extra lives.</li>
+          <li>Level 🆙 : As you progress the level increases, bringing tougher enemies.</li>
+        </ul>
+      </div>
     </div>
-      
+
     <div id="welcome-message">
       <h1>Your Objective</h1>
       <p> Eliminate as many Bond Villains as you can and survive as long as possible
-        to get a high score. Each level brings tougher and faster villains. Collect Vodka Martinis along the way to
-        gain extra lives. Good luck Mr. Bond</p>
+        to get a high score. Good luck Mr. Bond</p>
     </div>
-    </div>
-    
-    
-    <section id="game-area">
+  </div>
+
+
+  <section id="game-area">
     <div id="player"></div>
-    <span id="lives-display">❤️</span>
+    <span id="lives-display"></span>
     <img id="bond-image" src="/assets-1/images/007.png" alt="007" width="100px">
     <span id="levels-display"> </span>
     <span id="score-display"></span>
