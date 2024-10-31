@@ -38,7 +38,7 @@ document.addEventListener("keyup", (e) => {
 
 let lastShotTime = 0;
 // cooldowntime from shooting
-const shotCooldown = 700;
+const shotCooldown = 300;
 
 function shoot() {
   const currentTime = Date.now();
