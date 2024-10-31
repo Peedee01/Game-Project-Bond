@@ -161,27 +161,27 @@ body {
   background-image: url(../Assets/images/scaramanga.png);
   width: 130px;
   height: 130px;
-  animation: pulse 1s infinite;
+  animation: pulse 3s infinite;
 }
 .villain3 {
   background-image: url(../Assets/images/lechiffre.png);
   width: 132px;
   height: 132px;
-  animation: pulse 1s infinite;
+  animation: pulse 3s infinite;
 }
 
 .villain4 {
   background-image: url(..//Assets/images/renard.png);
   width: 133px;
   height: 133px;
-  animation: pulse 1s infinite;
+  animation: pulse 3s infinite;
 }
 
 .villain5 {
   background-image: url(../Assets/images/renard.png);
   width: 137px;
   height: 137px;
-  animation: pulse 1s infinite;
+  animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
